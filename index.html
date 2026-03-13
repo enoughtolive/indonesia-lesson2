@@ -133,18 +133,11 @@
       box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
     }
 
-    .quiz-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-
     .progress-text {
       font-size: 14px;
       font-weight: 800;
       color: #4b5563;
+      margin-bottom: 14px;
     }
 
     .progress-bar {
@@ -240,27 +233,19 @@
   <div class="wrap">
     <div class="hero">
       <h1>기초 인도네시아어 2강</h1>
-      <p>정중한 표현 + 새로운 단어 + 복음 연결 + 짧은 대화 + 퀴즈</p>
+      <p>정중한 표현 + 복음 연결</p>
     </div>
 
     <div class="section-title">정중한 표현</div>
     <div class="lesson-grid" id="politeGrid"></div>
 
-    <div class="section-title">새로운 단어 배우기</div>
-    <div class="lesson-grid" id="wordGrid"></div>
-
-    <div class="section-title">복음 연결 (1강 다음 단계)</div>
+    <div class="section-title">복음 연결</div>
     <div class="lesson-grid" id="gospelGrid"></div>
-
-    <div class="section-title">짧은 대화 예문</div>
-    <div class="lesson-grid" id="dialogueGrid"></div>
 
     <div class="quiz-wrap">
       <div class="section-title">간단 퀴즈</div>
       <div class="quiz-card">
-        <div class="quiz-top">
-          <div class="progress-text" id="progressText">1 / 4</div>
-        </div>
+        <div class="progress-text" id="progressText">1 / 4</div>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -272,8 +257,7 @@
       </div>
 
       <div class="tip">
-        중국은 교재에서는 보통 더 중립적으로 “Tiongkok”이라고 적었습니다.
-        음성은 브라우저 기본 TTS를 사용하므로 기기마다 조금 다르게 들릴 수 있습니다.
+        음성은 브라우저 기본 TTS를 사용합니다. 기기마다 발음이 조금 다를 수 있습니다.
       </div>
     </div>
   </div>
@@ -288,20 +272,6 @@
       { badge: "정중 표현", indo: "Tidak apa-apa", ko: "띠닥 아빠 아빠", zh: "蒂达克 阿帕阿帕", meaning: "괜찮아요" }
     ];
 
-    const newWords = [
-      { badge: "새 단어", indo: "dari", ko: "다리", zh: "达里", meaning: "~에서" },
-      { badge: "새 단어", indo: "Korea", ko: "코레아", zh: "韩国", meaning: "한국" },
-      { badge: "새 단어", indo: "Tiongkok", ko: "띠옹꼭", zh: "中国", meaning: "중국" },
-      { badge: "새 단어", indo: "kabar baik", ko: "카바르 바이크", zh: "卡巴尔 拜克", meaning: "좋은 소식" },
-      { badge: "새 단어", indo: "berbagi", ko: "버르바기", zh: "贝尔巴吉", meaning: "나누다" },
-      { badge: "새 단어", indo: "Tuhan", ko: "뚜한", zh: "图汉", meaning: "하나님" },
-      { badge: "새 단어", indo: "Anda", ko: "안다", zh: "安达", meaning: "당신" },
-      { badge: "새 단어", indo: "mengasihi", ko: "믕아시히", zh: "蒙阿西希", meaning: "사랑하다" },
-      { badge: "새 단어", indo: "percaya", ko: "쁘르짜야", zh: "珀尔查亚", meaning: "믿다" },
-      { badge: "새 단어", indo: "berbicara", ko: "버르비차라", zh: "贝尔比查拉", meaning: "이야기하다 / 대화하다" },
-      { badge: "새 단어", indo: "bolehkah", ko: "볼레까", zh: "博雷卡", meaning: "~해도 될까요" }
-    ];
-
     const gospelLines = [
       { badge: "복음 연결", indo: "Halo", ko: "할로", zh: "哈咯", meaning: "안녕하세요" },
       { badge: "복음 연결", indo: "Saya dari Korea", ko: "사야 다리 코레아", zh: "萨亚 达里 韩国", meaning: "저는 한국에서 왔습니다" },
@@ -312,16 +282,6 @@
       { badge: "복음 연결", indo: "Yesus juga mengasihi Anda", ko: "예수스 주가 믕아시히 안다", zh: "耶稣斯 朱加 蒙阿西希 安达", meaning: "예수님도 당신을 사랑하십니다" },
       { badge: "복음 연결", indo: "Apakah Anda percaya kepada Tuhan?", ko: "아빠까 안다 쁘르짜야 끄빠다 뚜한", zh: "阿帕卡 安达 珀尔查亚 克帕达 图汉？", meaning: "하나님을 믿으시나요?" },
       { badge: "복음 연결", indo: "Bolehkah saya berbicara sebentar?", ko: "볼레까 사야 버르비차라 스븐따르", zh: "博雷卡 萨亚 贝尔比查拉 瑟本塔尔？", meaning: "잠깐 이야기해도 될까요?" }
-    ];
-
-    const dialogueLines = [
-      { badge: "대화 예문", indo: "Halo", ko: "할로", zh: "哈咯", meaning: "안녕하세요" },
-      { badge: "대화 예문", indo: "Permisi", ko: "쁘르미시", zh: "珀尔米西", meaning: "실례합니다" },
-      { badge: "대화 예문", indo: "Maaf mengganggu", ko: "마아프 믕강구", zh: "马阿夫 蒙干古", meaning: "방해해서 죄송합니다" },
-      { badge: "대화 예문", indo: "Saya dari Korea", ko: "사야 다리 코레아", zh: "萨亚 达里 韩国", meaning: "저는 한국에서 왔습니다" },
-      { badge: "대화 예문", indo: "Saya orang Kristen", ko: "사야 오랑 크리스텐", zh: "萨亚 欧朗 基督徒", meaning: "저는 크리스천입니다" },
-      { badge: "대화 예문", indo: "Saya ingin berbagi kabar baik", ko: "사야 잉인 버르바기 카바르 바이크", zh: "萨亚 因金 贝尔巴吉 卡巴尔 拜克", meaning: "좋은 소식을 나누고 싶습니다" },
-      { badge: "대화 예문", indo: "Tuhan mengasihi Anda", ko: "뚜한 믕아시히 안다", zh: "图汉 蒙阿西希 安达", meaning: "하나님이 당신을 사랑하십니다" }
     ];
 
     function createCards(data, targetId) {
@@ -342,9 +302,7 @@
     }
 
     createCards(politeExpressions, "politeGrid");
-    createCards(newWords, "wordGrid");
     createCards(gospelLines, "gospelGrid");
-    createCards(dialogueLines, "dialogueGrid");
 
     function getVoice() {
       const voices = speechSynthesis.getVoices();
@@ -383,17 +341,17 @@
       },
       {
         question: "Terima kasih 뜻은 무엇일까요?",
-        options: ["감사합니다", "죄송합니다", "부탁합니다"],
+        options: ["감사합니다", "죄송합니다", "안녕하세요"],
         answer: "감사합니다"
       },
       {
         question: "Saya dari Korea 뜻은 무엇일까요?",
-        options: ["저는 한국에서 왔습니다", "저는 한국을 좋아합니다", "저는 한국 사람입니다"],
+        options: ["저는 한국에서 왔습니다", "저는 중국에서 왔습니다", "저는 크리스천입니다"],
         answer: "저는 한국에서 왔습니다"
       },
       {
         question: "Tuhan mengasihi Anda 뜻은 무엇일까요?",
-        options: ["하나님이 당신을 부르십니다", "하나님이 당신을 사랑하십니다", "하나님이 당신을 도우십니다"],
+        options: ["하나님이 당신을 부르십니다", "하나님이 당신을 사랑하십니다", "하나님을 믿으시나요"],
         answer: "하나님이 당신을 사랑하십니다"
       }
     ];
